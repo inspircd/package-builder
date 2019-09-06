@@ -3,7 +3,7 @@ Version:        @@INSPIRCD_VERSION@@
 Release:        @@INSPIRCD_REVISION@@%{?dist}
 Summary:        InspIRCd is a modular Internet Relay Chat (IRC) server.
 License:        GPLv2
-URL:            http://inspircd.org
+URL:            https://inspircd.org
 Source0:        https://github.com/inspircd/inspircd/archive/v%{version}.tar.gz
 
 BuildRequires:    gnutls-devel, systemd
