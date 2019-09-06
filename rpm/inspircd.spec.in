@@ -1,0 +1,60 @@
+Name:           inspircd
+Version:        @@INSPIRCD_VERSION@@
+Release:        @@INSPIRCD_REVISION@@%{?dist}
+Summary:        InspIRCd is a modular Internet Relay Chat (IRC) server.
+License:        GPLv2
+URL:            http://inspircd.org
+Source0:        https://github.com/inspircd/inspircd/archive/v%{version}.tar.gz
+
+BuildRequires:    gnutls-devel, systemd
+Requires:         gnutls, systemd
+Requires(pre):    shadow-utils
+Requires(post):   systemd
+Requires(preun):  systemd
+Requires(postun): systemd
+
+%description
+InspIRCd is a modular Internet Relay Chat (IRC) server written in C++ for Linux,
+BSD, Windows and macOS systems.
+
+%prep
+%setup -q
+
+%pre
+getent group inspircd >/dev/null || groupadd --system inspircd
+getent passwd inspircd >/dev/null || useradd --system --comment "InspIRCd" --gid inspircd --home-dir /dev/null --shell /sbin/nologin inspircd
+exit 0
+
+%post
+%systemd_post inspircd.service
+
+%preun
+%systemd_preun inspircd.service
+
+%postun
+%systemd_postun inspircd.service
+
+%build
+./configure --distribution-label rpm@@INSPIRCD_REVISION@@ --gid root --system --uid root
+make %{?_smp_mflags}
+
+%install
+rm -fr $RPM_BUILD_ROOT
+%make_install
+mkdir -p $RPM_BUILD_ROOT%{_unitdir}
+mv $RPM_BUILD_ROOT/usr/share/inspircd/inspircd.service $RPM_BUILD_ROOT%{_unitdir}
+
+%files
+%define _unpackaged_files_terminate_build 1
+/usr/lib/inspircd/core_*.so
+/usr/lib/inspircd/m_*.so
+/usr/sbin/inspircd
+/usr/sbin/inspircd-genssl
+/usr/share/doc/inspircd/*.example
+/usr/share/doc/inspircd/services/*.example
+/usr/share/doc/inspircd/sql/*.sql
+/usr/share/inspircd/.gdbargs
+/usr/share/inspircd/inspircd
+/usr/share/man/man1/inspircd.1.gz
+/usr/share/man/man1/inspircd-genssl.1.gz
+%{_unitdir}/inspircd.service
