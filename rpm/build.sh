@@ -7,6 +7,12 @@ then
 	exit 1
 fi
 
+if [ -n "${RPM_DISABLED}" ]
+then
+	echo 'Skipping RPM packages because RPM_DISABLED is set.'
+	return
+fi
+
 # The RPM platforms that we build on.
 declare -A RPM_PLATFORMS=(
 	["CentOS 7"]="centos:7"
