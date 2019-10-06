@@ -28,6 +28,7 @@ for RPM_PLATFORM in "${!RPM_PLATFORMS[@]}"
 do
 	docker pull ${RPM_PLATFORMS[${RPM_PLATFORM}]}
 	docker run --rm \
+		-e "DISTRO_NAME=${RPM_PLATFORM}" \
 		-v "${INSPIRCD_ROOT_DIR}/rpm:/root/sources" \
 		-v "${INSPIRCD_BUILD_DIR}:/root/packages" \
 		-w '/root' \
