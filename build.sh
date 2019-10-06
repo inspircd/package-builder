@@ -23,10 +23,10 @@ then
 fi
 
 # The directory the current script is in.
-INSPIRCD_ROOT_DIR=$(dirname $(readlink -f "${BASH_SOURCE[0]}"))
+export INSPIRCD_ROOT_DIR=$(dirname $(readlink -f "${BASH_SOURCE[0]}"))
 
 # The directory that packages are built in.
-INSPIRCD_BUILD_DIR="${INSPIRCD_ROOT_DIR}/build"
+export INSPIRCD_BUILD_DIR="${INSPIRCD_ROOT_DIR}/build"
 rm -fr ${INSPIRCD_BUILD_DIR}
 mkdir -p ${INSPIRCD_BUILD_DIR}
 
