@@ -1,9 +1,11 @@
+#!/usr/bin/env ruby
+
 %w(erb yaml).each do |lib|
 	require lib
 end
 
 # The directory that packages are built in.
-INSPIRCD_BUILD_DIR = ENV['INSPIRCD_BUILD_DIR'] || fail('INSPIRCD_BUILD_DIR not set')
+INSPIRCD_BUILD_DIR = '/root/packages'
 
 # Read the package index.
 packages = YAML.load_file(File.join(INSPIRCD_BUILD_DIR, 'packages.yml')) rescue nil

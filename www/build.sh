@@ -13,11 +13,11 @@ then
 	return
 fi
 
-RUBY=${RUBY:=ruby}
-if ! ${RUBY} --version 1>/dev/null 2>/dev/null
-then
-	echo 'Skipping the web interface because Ruby is not installed.'
-	return
-fi
-
-${RUBY} "${INSPIRCD_ROOT_DIR}/www/build.rb"
+# Build the web interface.
+docker pull ruby:slim
+docker run --rm \
+	-v "${INSPIRCD_ROOT_DIR}/www:/root/sources" \
+	-v "${INSPIRCD_BUILD_DIR}:/root/packages" \
+	-w '/root' \
+	ruby:slim \
+	'/root/sources/docker.rb'
