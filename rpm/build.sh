@@ -16,6 +16,7 @@ fi
 # The RPM platforms that we build on.
 declare -A RPM_PLATFORMS=(
 	["CentOS 7"]="centos:7"
+	["CentOS 8"]="centos:8"
 )
 
 # Perform the setup for RPM packages.
