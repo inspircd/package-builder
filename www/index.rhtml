@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>InspIRCd Packages</title>
+		<meta charset="utf-8">
+		<style type="text/css">
+			body {
+				color: #444444;
+				font-size: 18px;
+				line-height: 1.5;
+				margin: 50px 15%;
+			}
+			h1 {
+				line-height: 1.2
+			}
+		</style>
+	</head>
+	<body>
+		<h1>InspIRCd Packages</h1>
+<% packages.each do |name, files| %>
+			<h2><%= name %></h2>
+			<ul>
+<%  files.each do |file| %>
+				<li><a href="<%= file %>"><%= file %></a> &mdash; <%= File.size(File.join(directory, file)) %> bytes</li>
+<% end %>
+			</ul>
+			<hr>
+<% end %>
+		<footer>Package list generated at <%= Time.now %> using the <a href="https://github.com/inspircd/inspircd-packages">InspIRCd Package Builder</a>.</footer>
+	</body>
+</html>

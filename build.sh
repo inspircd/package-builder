@@ -32,3 +32,6 @@ mkdir -p ${INSPIRCD_BUILD_DIR}
 
 # Build the RPM packages.
 source "${INSPIRCD_ROOT_DIR}/rpm/build.sh"
+
+# Build the web interface
+source "${INSPIRCD_ROOT_DIR}/www/build.sh"
