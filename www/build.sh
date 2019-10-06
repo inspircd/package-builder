@@ -13,6 +13,8 @@ then
 	return
 fi
 
+echo 'Building the web interface ...'
+
 # Build the web interface.
 docker pull ruby:slim
 docker run --rm \

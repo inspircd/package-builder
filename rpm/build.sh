@@ -13,6 +13,8 @@ then
 	return
 fi
 
+echo 'Building the RPM packages ...'
+
 # The RPM platforms that we build on.
 declare -A RPM_PLATFORMS=(
 	["CentOS 7"]="centos:7"
@@ -30,6 +32,7 @@ sed -i "s/@@INSPIRCD_REVISION@@/${INSPIRCD_REVISION}/g" ${SPECFILE}
 # Build the RPM packages.
 for RPM_PLATFORM in "${!RPM_PLATFORMS[@]}"
 do
+	echo "Building the RPM package for ${RPM_PLATFORM} ..."
 	docker pull ${RPM_PLATFORMS[${RPM_PLATFORM}]}
 	docker run --rm \
 		-e "DISTRO_NAME=${RPM_PLATFORM}" \
