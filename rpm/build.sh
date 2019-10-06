@@ -19,10 +19,13 @@ declare -A RPM_PLATFORMS=(
 	["CentOS 8"]="centos:8"
 )
 
+# The path to the the RPM .spec file.
+SPECFILE="${INSPIRCD_ROOT_DIR}/rpm/inspircd.spec"
+
 # Perform the setup for RPM packages.
-cp "${INSPIRCD_ROOT_DIR}/rpm/inspircd.spec.in" "${INSPIRCD_ROOT_DIR}/rpm/inspircd.spec"
-sed -i "s/@@INSPIRCD_VERSION@@/${INSPIRCD_VERSION}/g" "${INSPIRCD_ROOT_DIR}/rpm/inspircd.spec"
-sed -i "s/@@INSPIRCD_REVISION@@/${INSPIRCD_REVISION}/g" "${INSPIRCD_ROOT_DIR}/rpm/inspircd.spec"
+cp "${SPECFILE}.in" ${SPECFILE}
+sed -i "s/@@INSPIRCD_VERSION@@/${INSPIRCD_VERSION}/g" ${SPECFILE}
+sed -i "s/@@INSPIRCD_REVISION@@/${INSPIRCD_REVISION}/g" ${SPECFILE}
 
 # Build the RPM packages.
 for RPM_PLATFORM in "${!RPM_PLATFORMS[@]}"
@@ -38,4 +41,4 @@ do
 done
 
 # Clean out the garbage.
-rm -f "${INSPIRCD_ROOT_DIR}/rpm/inspircd.spec"
+rm -f ${SPECFILE}
