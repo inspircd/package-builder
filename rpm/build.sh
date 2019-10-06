@@ -23,7 +23,7 @@ declare -A RPM_PLATFORMS=(
 SPECFILE="${INSPIRCD_ROOT_DIR}/rpm/inspircd.spec"
 
 # Perform the setup for RPM packages.
-cp "${SPECFILE}.in" ${SPECFILE}
+cp -f "${SPECFILE}.in" ${SPECFILE}
 sed -i "s/@@INSPIRCD_VERSION@@/${INSPIRCD_VERSION}/g" ${SPECFILE}
 sed -i "s/@@INSPIRCD_REVISION@@/${INSPIRCD_REVISION}/g" ${SPECFILE}
 
