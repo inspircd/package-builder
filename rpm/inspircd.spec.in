@@ -51,9 +51,10 @@ mv $RPM_BUILD_ROOT/usr/share/inspircd/inspircd.service $RPM_BUILD_ROOT%{_unitdir
 /usr/sbin/inspircd
 /usr/sbin/inspircd-genssl
 /usr/share/doc/inspircd/*.example
+/usr/share/doc/inspircd/codepages/*.example
+/usr/share/doc/inspircd/providers/*.example
 /usr/share/doc/inspircd/services/*.example
 /usr/share/doc/inspircd/sql/*.sql
-/usr/share/inspircd/.gdbargs
 /usr/share/inspircd/inspircd
 /usr/share/man/man1/inspircd.1.gz
 /usr/share/man/man1/inspircd-genssl.1.gz
