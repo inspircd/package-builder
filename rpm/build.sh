@@ -1,6 +1,3 @@
-#!/bin/bash
-set -e
-
 if [ -z "${INSPIRCD_ROOT_DIR}" ]
 then
 	>&2 echo 'This script should not be used directly!'
