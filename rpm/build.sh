@@ -12,32 +12,65 @@ fi
 
 echo 'Building the RPM packages ...'
 
-# The RPM platforms that we build on.
-declare -A RPM_PLATFORMS=(
-	["CentOS 7"]="centos:7"
-	["CentOS 8"]="centos:8"
-)
-
 # The path to the the RPM .spec file.
 SPECFILE="${INSPIRCD_ROOT_DIR}/rpm/inspircd.spec"
 
-# Perform the setup for RPM packages.
-cp -f "${SPECFILE}.in" ${SPECFILE}
-sed -i "s/@@INSPIRCD_VERSION@@/${INSPIRCD_VERSION}/g" ${SPECFILE}
-sed -i "s/@@INSPIRCD_REVISION@@/${INSPIRCD_REVISION}/g" ${SPECFILE}
-
 # Build the RPM packages.
-for RPM_PLATFORM in "${!RPM_PLATFORMS[@]}"
+for PLATFORM in ${INSPIRCD_ROOT_DIR}/rpm/platforms/*.sh
 do
-	echo "Building the RPM package for ${RPM_PLATFORM} ..."
-	docker pull ${RPM_PLATFORMS[${RPM_PLATFORM}]}
+	# Work out what we actually need to do.
+	source ${PLATFORM}
+	for INSPIRCD_MODULE in ${INSPIRCD_MODULES}
+	do
+		if [ "${MODULE_BUILD_DEPS[${INSPIRCD_MODULE}]+isdef}" -a "${MODULE_RUNTIME_DEPS[${INSPIRCD_MODULE}]+isdef}" ]
+		then
+			if [ "${MODULE_ERRORS[${INSPIRCD_MODULE}]+isdef}" ]
+			then
+				>&2 echo "Unable to enable ${INSPIRCD_MODULE} because ${MODULE_ERRORS[${INSPIRCD_MODULE}]}!"
+				[ -z "${INSPIRCD_MODULES_DEFAULT}" ] && exit 1
+			elif [ "${MODULE_WARNINGS[${INSPIRCD_MODULE}]+isdef}" -a -z "${INSPIRCD_IGNORE_WARNINGS}" ]
+			then
+				>&2 echo "Unable to enable ${INSPIRCD_MODULE} because ${MODULE_WARNINGS[${INSPIRCD_MODULE}]}!"
+				if [ -z "${INSPIRCD_MODULES_DEFAULT}" ]
+				then
+					>&2 echo "Set INSPIRCD_IGNORE_WARNINGS=1 to ignore this warning!"
+					exit 1
+				fi
+			else
+				RPM_BUILD_DEPS="${RPM_BUILD_DEPS} ${MODULE_BUILD_DEPS[${INSPIRCD_MODULE}]}"
+				RPM_RUNTIME_DEPS="${RPM_RUNTIME_DEPS} ${MODULE_RUNTIME_DEPS[${INSPIRCD_MODULE}]}"
+				RPM_MODULES="${RPM_MODULES} ${INSPIRCD_MODULE}"
+			fi
+		elif [ -z "${INSPIRCD_MODULES_DEFAULT}" ]
+		then
+			>&2 echo "${INSPIRCD_MODULE} is not a module supported by this build script!"
+			exit 1
+		fi
+	done
+
+	# Create the specfile for this platform.
+	cp -f "${SPECFILE}.in" ${SPECFILE}
+	sed -i "s/@@INSPIRCD_VERSION@@/${INSPIRCD_VERSION}/g" ${SPECFILE}
+	sed -i "s/@@INSPIRCD_REVISION@@/${INSPIRCD_REVISION}/g" ${SPECFILE}
+	sed -i "s/@@RPM_BUILD_DEPS@@/${RPM_BUILD_DEPS//\s+/,/}/g" ${SPECFILE}
+	sed -i "s/@@RPM_RUNTIME_DEPS@@/${RPM_RUNTIME_DEPS//\s+/,/}/g" ${SPECFILE}
+	sed -i "s/@@RPM_MODULES@@/${RPM_MODULES}/g" ${SPECFILE}
+
+	# Actually build the package.
+	echo "Building the RPM package for ${PLATFORM_NAME} ..."
+	docker pull ${PLATFORM_CONTAINER}
 	docker run --rm \
-		-e "DISTRO_NAME=${RPM_PLATFORM}" \
+		-e "DISTRO_NAME=${PLATFORM_NAME}" \
+		-e "DISTRO_PACKAGES=${RPM_BUILD_DEPS}" \
 		-v "${INSPIRCD_ROOT_DIR}/rpm:/root/sources" \
 		-v "${INSPIRCD_BUILD_DIR}:/root/packages" \
 		-w '/root' \
-		${RPM_PLATFORMS[${RPM_PLATFORM}]} \
+		${PLATFORM_CONTAINER} \
 		'/root/sources/docker.sh'
+
+	# Clean up for the next run.
+	unset MODULE_BUILD_DEPS MODULE_RUNTIME_DEPS MODULE_ERRORS MODULE_WARNINGS
+	rm -f ${SPECFILE}
 done
 
 # Clean out the garbage.

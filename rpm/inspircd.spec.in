@@ -6,8 +6,8 @@ License:        GPLv2
 URL:            https://inspircd.org
 Source0:        https://github.com/inspircd/inspircd/archive/v%{version}.tar.gz
 
-BuildRequires:    gnutls-devel, systemd
-Requires:         gnutls, systemd
+BuildRequires:    systemd @@RPM_BUILD_DEPS@@
+Requires:         systemd @@RPM_RUNTIME_DEPS@@
 Requires(pre):    shadow-utils
 Requires(post):   systemd
 Requires(preun):  systemd
@@ -35,8 +35,9 @@ exit 0
 %systemd_postun inspircd.service
 
 %build
-./configure --distribution-label rpm@@INSPIRCD_REVISION@@ --gid root --system --uid root
-make %{?_smp_mflags}
+./configure --enable-extras "@@RPM_MODULES@@"
+./configure --disable-auto-extras --distribution-label rpm@@INSPIRCD_REVISION@@ --gid root --system --uid root
+INSPIRCD_DISABLE_RPATH=1 make %{?_smp_mflags}
 
 %install
 rm -fr $RPM_BUILD_ROOT

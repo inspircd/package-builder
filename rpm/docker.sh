@@ -13,15 +13,12 @@ PACKAGEDB='/root/packages/packages.yml'
 # Install the required tools and development packages.
 yum install --assumeyes \
 	gcc-c++ \
-	gnutls-devel \
 	make \
-	rpmdevtools
+	rpmdevtools \
+	${DISTRO_PACKAGES}
 
-# Set up the development environment.
+# Set up and build the package.
 rpmdev-setuptree
-chown 'root:root' ${SPEC}
-
-# Build the package.
 spectool --get-files --sourcedir ${SPEC}
 rpmbuild -ba ${SPEC}
 
