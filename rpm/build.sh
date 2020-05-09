@@ -50,8 +50,8 @@ do
 	cp -f "${SPECFILE}.in" ${SPECFILE}
 	sed -i "s/@@INSPIRCD_VERSION@@/${INSPIRCD_VERSION}/g" ${SPECFILE}
 	sed -i "s/@@INSPIRCD_REVISION@@/${INSPIRCD_REVISION}/g" ${SPECFILE}
-	sed -i "s/@@RPM_BUILD_DEPS@@/${RPM_BUILD_DEPS//\s+/,/}/g" ${SPECFILE}
-	sed -i "s/@@RPM_RUNTIME_DEPS@@/${RPM_RUNTIME_DEPS//\s+/,/}/g" ${SPECFILE}
+	sed -i "s/@@RPM_BUILD_DEPS@@/${RPM_BUILD_DEPS}/g" ${SPECFILE}
+	sed -i "s/@@RPM_RUNTIME_DEPS@@/${RPM_RUNTIME_DEPS}/g" ${SPECFILE}
 	sed -i "s/@@RPM_MODULES@@/${RPM_MODULES}/g" ${SPECFILE}
 
 	# Actually build the package.
