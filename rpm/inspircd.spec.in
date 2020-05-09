@@ -47,6 +47,9 @@ mv $RPM_BUILD_ROOT/usr/share/inspircd/inspircd.service $RPM_BUILD_ROOT%{_unitdir
 
 %files
 %define _unpackaged_files_terminate_build 1
+%dir %attr(755, inspircd, inspircd) /etc/inspircd
+%dir %attr(755, inspircd, inspircd) /var/inspircd
+%dir %attr(755, inspircd, inspircd) /var/log/inspircd
 /usr/lib/inspircd/core_*.so
 /usr/lib/inspircd/m_*.so
 /usr/sbin/inspircd
