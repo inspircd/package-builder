@@ -23,6 +23,7 @@ then
 fi
 
 # The INSPIRCD_MODULES variable may be set.
+INSPIRCD_MODULES_DEFAULT=''
 if [ -z "${INSPIRCD_MODULES}" ]
 then
 	echo "INSPIRCD_MODULES is not set; enabling all modules."

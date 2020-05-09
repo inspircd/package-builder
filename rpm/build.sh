@@ -22,25 +22,23 @@ do
 	source ${PLATFORM}
 	for INSPIRCD_MODULE in ${INSPIRCD_MODULES}
 	do
-		if [ "${MODULE_BUILD_DEPS[${INSPIRCD_MODULE}]+isdef}" -a "${MODULE_RUNTIME_DEPS[${INSPIRCD_MODULE}]+isdef}" ]
+		if [ "${MODULE_ERRORS[${INSPIRCD_MODULE}]+isdef}" ]
 		then
-			if [ "${MODULE_ERRORS[${INSPIRCD_MODULE}]+isdef}" ]
+			>&2 echo "Unable to enable ${INSPIRCD_MODULE} because ${MODULE_ERRORS[${INSPIRCD_MODULE}]}!"
+			[ -z "${INSPIRCD_MODULES_DEFAULT}" ] && exit 1
+		elif [ "${MODULE_WARNINGS[${INSPIRCD_MODULE}]+isdef}" -a -z "${INSPIRCD_IGNORE_WARNINGS}" ]
+		then
+			>&2 echo "Unable to enable ${INSPIRCD_MODULE} because ${MODULE_WARNINGS[${INSPIRCD_MODULE}]}!"
+			if [ -z "${INSPIRCD_MODULES_DEFAULT}" ]
 			then
-				>&2 echo "Unable to enable ${INSPIRCD_MODULE} because ${MODULE_ERRORS[${INSPIRCD_MODULE}]}!"
-				[ -z "${INSPIRCD_MODULES_DEFAULT}" ] && exit 1
-			elif [ "${MODULE_WARNINGS[${INSPIRCD_MODULE}]+isdef}" -a -z "${INSPIRCD_IGNORE_WARNINGS}" ]
-			then
-				>&2 echo "Unable to enable ${INSPIRCD_MODULE} because ${MODULE_WARNINGS[${INSPIRCD_MODULE}]}!"
-				if [ -z "${INSPIRCD_MODULES_DEFAULT}" ]
-				then
-					>&2 echo "Set INSPIRCD_IGNORE_WARNINGS=1 to ignore this warning!"
-					exit 1
-				fi
-			else
-				RPM_BUILD_DEPS="${RPM_BUILD_DEPS} ${MODULE_BUILD_DEPS[${INSPIRCD_MODULE}]}"
-				RPM_RUNTIME_DEPS="${RPM_RUNTIME_DEPS} ${MODULE_RUNTIME_DEPS[${INSPIRCD_MODULE}]}"
-				RPM_MODULES="${RPM_MODULES} ${INSPIRCD_MODULE}"
+				>&2 echo "Set INSPIRCD_IGNORE_WARNINGS=1 to ignore this warning!"
+				exit 1
 			fi
+		elif [ "${MODULE_BUILD_DEPS[${INSPIRCD_MODULE}]+isdef}" -a "${MODULE_RUNTIME_DEPS[${INSPIRCD_MODULE}]+isdef}" ]
+		then
+			RPM_BUILD_DEPS="${RPM_BUILD_DEPS} ${MODULE_BUILD_DEPS[${INSPIRCD_MODULE}]}"
+			RPM_RUNTIME_DEPS="${RPM_RUNTIME_DEPS} ${MODULE_RUNTIME_DEPS[${INSPIRCD_MODULE}]}"
+			RPM_MODULES="${RPM_MODULES} ${INSPIRCD_MODULE}"
 		elif [ -z "${INSPIRCD_MODULES_DEFAULT}" ]
 		then
 			>&2 echo "${INSPIRCD_MODULE} is not a module supported by this build script!"
