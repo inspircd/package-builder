@@ -40,6 +40,10 @@ do
 		fi
 	done
 
+	# Remove duplicate packages.
+	RPM_BUILD_DEPS=`echo ${RPM_BUILD_DEPS} | sort -u`
+	RPM_RUNTIME_DEPS=`echo ${RPM_RUNTIME_DEPS} | sort -u`
+
 	# Create the specfile for this platform.
 	cp -f "${SPECFILE}.in" ${SPECFILE}
 	sed -i "s/@@INSPIRCD_VERSION@@/${INSPIRCD_VERSION}/g" ${SPECFILE}
