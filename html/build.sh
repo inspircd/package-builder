@@ -9,7 +9,7 @@ echo 'Building the web interface ...'
 # Build the web interface.
 docker pull ruby:slim
 docker run --rm \
-	-v "${INSPIRCD_ROOT_DIR}/www:/root/sources" \
+	-v "${INSPIRCD_ROOT_DIR}/html:/root/sources" \
 	-v "${INSPIRCD_BUILD_DIR}:/root/packages" \
 	-w '/root' \
 	ruby:slim \
