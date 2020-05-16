@@ -22,6 +22,14 @@ then
 	INSPIRCD_REVISION='1'
 fi
 
+# The INSPIRCD_PACKAGES variable may be set.
+if [ -z "${INSPIRCD_PACKAGES}" ]
+then
+	echo "INSPIRCD_PACKAGES is not set; enabling all packages."
+	INSPIRCD_PACKAGES_DEFAULT='1'
+	INSPIRCD_PACKAGES='rpm www'
+fi
+
 # The INSPIRCD_MODULES variable may be set.
 INSPIRCD_MODULES_DEFAULT=''
 if [ -z "${INSPIRCD_MODULES}" ]
@@ -39,8 +47,11 @@ export INSPIRCD_BUILD_DIR="${INSPIRCD_ROOT_DIR}/build"
 rm -fr ${INSPIRCD_BUILD_DIR}
 mkdir -p ${INSPIRCD_BUILD_DIR}
 
-# Build the RPM packages.
-source "${INSPIRCD_ROOT_DIR}/rpm/build.sh"
-
-# Build the web interface
-source "${INSPIRCD_ROOT_DIR}/www/build.sh"
+# Build the packages.
+for INSPIRCD_PACKAGE in ${INSPIRCD_PACKAGES}
+do
+	if [ -d "${INSPIRCD_ROOT_DIR}/${INSPIRCD_PACKAGE}" ]
+	then
+		source "${INSPIRCD_ROOT_DIR}/${INSPIRCD_PACKAGE}/build.sh"
+	fi
+done

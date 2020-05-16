@@ -4,12 +4,6 @@ then
 	exit 1
 fi
 
-if [ -n "${WWW_DISABLED}" ]
-then
-	echo 'Skipping the web interface because WWW_DISABLED is set.'
-	return
-fi
-
 echo 'Building the web interface ...'
 
 # Build the web interface.

@@ -4,12 +4,6 @@ then
 	exit 1
 fi
 
-if [ -n "${RPM_DISABLED}" ]
-then
-	echo 'Skipping RPM packages because RPM_DISABLED is set.'
-	return
-fi
-
 echo 'Building the RPM packages ...'
 
 # The path to the the RPM .spec file.
