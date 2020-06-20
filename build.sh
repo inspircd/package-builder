@@ -59,6 +59,6 @@ for INSPIRCD_PACKAGE in ${INSPIRCD_PACKAGES}
 do
 	if [ -d "${INSPIRCD_ROOT_DIR}/${INSPIRCD_PACKAGE}" ]
 	then
-		source "${INSPIRCD_ROOT_DIR}/${INSPIRCD_PACKAGE}/build.sh"
+		source "${INSPIRCD_ROOT_DIR}/${INSPIRCD_PACKAGE}/host.sh"
 	fi
 done
