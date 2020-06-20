@@ -39,6 +39,13 @@ then
 	INSPIRCD_MODULES='geo_maxmind ldap mysql pgsql regex_pcre regex_posix regex_re2 regex_stdlib regex_tre sqlite3 ssl_gnutls ssl_mbedtls ssl_openssl sslrehashsignal'
 fi
 
+# Modules which should not be packaged.
+declare -Ax INSPIRCD_MODULE_WARNINGS=(
+	["geo_maxmind"]="libmaxminddb's license (Apache 2.0) is not compatible with InspIRCd's (GPLv2)"
+	["ssl_mbedtls"]="mbedTLS's license (Apache 2.0) is not compatible with InspIRCd's (GPLv2)"
+	["ssl_openssl"]="OpenSSL's license (custom) is not compatible with InspIRCd's (GPLv2)"
+)
+
 # The directory the current script is in.
 export INSPIRCD_ROOT_DIR=$(dirname $(readlink -f "${BASH_SOURCE[0]}"))
 

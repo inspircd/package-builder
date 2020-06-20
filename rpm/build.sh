@@ -14,6 +14,14 @@ for PLATFORM in ${INSPIRCD_ROOT_DIR}/rpm/platforms/*.sh
 do
 	# Work out what we actually need to do.
 	source ${PLATFORM}
+
+	# Combine the platform warnings with the global warnings.
+	for INSPIRCD_MODULE_WARNING in "${!INSPIRCD_MODULE_WARNINGS[@]}"
+	do
+		MODULE_WARNINGS[${INSPIRCD_MODULE_WARNING}]=${INSPIRCD_MODULE_WARNINGS[${INSPIRCD_MODULE_WARNING}]}
+	done
+
+	# Attempt to enable all of the requested modules.
 	for INSPIRCD_MODULE in ${INSPIRCD_MODULES}
 	do
 		if [ "${MODULE_ERRORS[${INSPIRCD_MODULE}]+isdef}" ]

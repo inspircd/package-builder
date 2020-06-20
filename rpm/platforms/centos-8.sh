@@ -41,8 +41,4 @@ declare -Ax MODULE_ERRORS=(
 	["ssl_mbedtls"]="mbedTLS is not packaged by CentOS 8"
 )
 
-declare -Ax MODULE_WARNINGS=(
-	["geo_maxmind"]="libmaxminddb's license (Apache 2.0) is not compatible with InspIRCd's (GPLv2)"
-	["ssl_mbedtls"]="mbedTLS's license (Apache 2.0) is not compatible with InspIRCd's (GPLv2)"
-	["ssl_openssl"]="OpenSSL's license (custom) is not compatible with InspIRCd's (GPLv2)"
-)
+declare -Ax MODULE_WARNINGS=()
