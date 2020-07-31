@@ -44,16 +44,20 @@ rm -fr $RPM_BUILD_ROOT
 %make_install
 mkdir -p $RPM_BUILD_ROOT%{_unitdir}
 mv $RPM_BUILD_ROOT/usr/share/inspircd/inspircd.service $RPM_BUILD_ROOT%{_unitdir}
+mkdir -p $RPM_BUILD_ROOT/etc/logrotate.d
+mv $RPM_BUILD_ROOT/usr/share/inspircd/logrotate $RPM_BUILD_ROOT/etc/logrotate.d/inspircd
 
 %files
 %define _unpackaged_files_terminate_build 1
 %dir %attr(755, inspircd, inspircd) /etc/inspircd
 %dir %attr(755, inspircd, inspircd) /var/inspircd
 %dir %attr(755, inspircd, inspircd) /var/log/inspircd
+/etc/inspircd/help.txt
+/etc/logrotate.d/inspircd
 /usr/lib/inspircd/core_*.so
 /usr/lib/inspircd/m_*.so
 /usr/sbin/inspircd
-/usr/sbin/inspircd-genssl
+/usr/sbin/inspircd-*
 /usr/share/doc/inspircd/*.example
 /usr/share/doc/inspircd/codepages/*.example
 /usr/share/doc/inspircd/providers/*.example
@@ -61,5 +65,5 @@ mv $RPM_BUILD_ROOT/usr/share/inspircd/inspircd.service $RPM_BUILD_ROOT%{_unitdir
 /usr/share/doc/inspircd/sql/*.sql
 /usr/share/inspircd/inspircd
 /usr/share/man/man1/inspircd.1.gz
-/usr/share/man/man1/inspircd-genssl.1.gz
+/usr/share/man/man1/inspircd-*.1.gz
 %{_unitdir}/inspircd.service
