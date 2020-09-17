@@ -4,7 +4,7 @@
 
 This repository contains scripts for building InspIRCd packages. Currently, it has support for:
 
-* RPM on CentOS 7
+* RPM on CentOS 7 and 8
 
 Support for packaging systems and platforms is planned. See the [open issues](https://github.com/inspircd/inspircd-packages/issues/3) for details.
 
