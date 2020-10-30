@@ -34,6 +34,7 @@ declare -Ax MODULE_RUNTIME_DEPS=(
 )
 
 declare -Ax MODULE_ERRORS=(
+	["argon2"]="Argon2 is not packaged by CentOS 7"
 	["regex_re2"]="RE2 is not is not packaged by CentOS 7"
 	["regex_stdlib"]="GCC 4.9 is required for std::regex support"
 	["regex_tre"]="TRE is not is not packaged by CentOS 7"

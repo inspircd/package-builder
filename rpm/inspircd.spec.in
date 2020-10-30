@@ -35,7 +35,10 @@ exit 0
 %systemd_postun inspircd.service
 
 %build
-./configure --enable-extras "@@RPM_MODULES@@"
+for MODULE in @@RPM_MODULES@@
+do
+	./configure --enable-extras ${MODULE}
+done
 ./configure --disable-auto-extras --distribution-label rpm@@INSPIRCD_REVISION@@ --gid root --system --uid root
 INSPIRCD_DISABLE_RPATH=1 make %{?_smp_mflags}
 
