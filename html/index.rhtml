@@ -1,3 +1,14 @@
+<%
+def human_size(bytes)
+	if bytes < 1024
+		"#{bytes} B"
+	elsif bytes < 1_048_576
+		"#{(bytes / 1024.0).round(2)} KiB"
+	else
+		"#{(bytes / 1_048_576.0).round(2)} MiB"
+	end
+end
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,7 +22,7 @@
 				margin: 50px 15%;
 			}
 			h1 {
-				line-height: 1.2
+				line-height: 1.2;
 			}
 		</style>
 	</head>
@@ -21,7 +32,7 @@
 			<h2><%= name %></h2>
 			<ul>
 <%  files.each do |file| %>
-				<li><a href="<%= file %>"><%= file %></a> &mdash; <%= File.size(File.join(directory, file)) %> bytes</li>
+				<li><a href="<%= file %>"><%= file %></a> &mdash; <%= human_size(File.size(File.join(directory, file))) %></li>
 <% end %>
 			</ul>
 			<hr>
