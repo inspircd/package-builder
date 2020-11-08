@@ -6,7 +6,7 @@ fi
 
 export PLATFORM_NAME="Ubuntu 20.04 (Focal Fossa)"
 export PLATFORM_CONTAINER="ubuntu:focal"
-export PLATFORM_SUFFIX="focal"
+export PLATFORM_SUFFIX="ubuntu20.04."
 
 declare -Ax MODULE_BUILD_DEPS=(
 	["argon2"]="libargon2-dev pkg-config"

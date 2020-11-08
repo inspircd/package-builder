@@ -1,5 +1,5 @@
-inspircd (@@INSPIRCD_VERSION@@-@@INSPIRCD_REVISION@@) unstable; urgency=medium
+inspircd (@@INSPIRCD_VERSION@@~@@PLATFORM_SUFFIX@@@@INSPIRCD_REVISION@@) unstable; urgency=medium
 
-  * Release @@INSPIRCD_VERSION@@-@@INSPIRCD_REVISION@@.
+  * Release @@INSPIRCD_VERSION@@~@@PLATFORM_SUFFIX@@@@INSPIRCD_REVISION@@.
 
  -- InspIRCd Team <noreply@inspircd.org>  @@DEB_BUILD_STAMP@@

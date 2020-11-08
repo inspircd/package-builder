@@ -37,7 +37,6 @@ dpkg-buildpackage
 echo "${DISTRO_NAME}:" >> ${PACKAGEDB}
 for PACKAGE in "/root/"*.deb
 do
-	PACKAGE_NAME="$(basename ${PACKAGE} .deb).${DISTRO_SUFFIX}.deb"
-	mv ${PACKAGE} ${PACKAGES}/${PACKAGE_NAME}
-	echo "  - ${PACKAGE_NAME}" >> ${PACKAGEDB}
+	mv ${PACKAGE} ${PACKAGES}
+	echo "  - $(basename ${PACKAGE})" >> ${PACKAGEDB}
 done

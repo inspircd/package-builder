@@ -6,7 +6,7 @@ fi
 
 export PLATFORM_NAME="Debian 10 (Buster, Stable)"
 export PLATFORM_CONTAINER="debian:buster"
-export PLATFORM_SUFFIX="buster"
+export PLATFORM_SUFFIX="deb10u"
 
 declare -Ax MODULE_BUILD_DEPS=(
 	["argon2"]="libargon2-dev pkg-config"

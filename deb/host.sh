@@ -58,6 +58,7 @@ do
 		cp -f ${INFILE} ${FILE}
 		sed -i "s/@@INSPIRCD_VERSION@@/${INSPIRCD_VERSION}/g" ${FILE}
 		sed -i "s/@@INSPIRCD_REVISION@@/${INSPIRCD_REVISION}/g" ${FILE}
+		sed -i "s/@@PLATFORM_SUFFIX@@/${PLATFORM_SUFFIX}/g" ${FILE}
 		sed -i "s/@@DEB_BUILD_STAMP@@/$(date -Ru)/g" ${FILE}
 		sed -i "s/@@DEB_BUILD_DEPS@@/${DEB_BUILD_DEPS}/g" ${FILE}
 		sed -i "s/@@DEB_BUILD_DEPS_COMMA@@/${DEB_BUILD_DEPS// /,}/g" ${FILE}
@@ -72,7 +73,6 @@ do
 	docker run --rm \
 		-e "DISTRO_NAME=${PLATFORM_NAME}" \
 		-e "DISTRO_PACKAGES=${DEB_BUILD_DEPS}" \
-		-e "DISTRO_SUFFIX=${PLATFORM_SUFFIX}" \
 		-e "INSPIRCD_VERSION=${INSPIRCD_VERSION}" \
 		-v "${INSPIRCD_ROOT_DIR}/deb:/root/sources" \
 		-v "${INSPIRCD_BUILD_DIR}:/root/packages" \

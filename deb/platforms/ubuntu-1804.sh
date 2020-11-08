@@ -6,7 +6,7 @@ fi
 
 export PLATFORM_NAME="Ubuntu 18.04 (Bionic Beaver)"
 export PLATFORM_CONTAINER="ubuntu:bionic"
-export PLATFORM_SUFFIX="bionic"
+export PLATFORM_SUFFIX="ubuntu18.04."
 
 declare -Ax MODULE_BUILD_DEPS=(
 	["argon2"]="libargon2-0-dev pkg-config"

@@ -6,7 +6,7 @@ fi
 
 export PLATFORM_NAME="Debian 11 (Bullseye, Unstable)"
 export PLATFORM_CONTAINER="debian:bullseye"
-export PLATFORM_SUFFIX="bullseye"
+export PLATFORM_SUFFIX="deb11u"
 
 declare -Ax MODULE_BUILD_DEPS=(
 	["argon2"]="libargon2-dev pkg-config"
