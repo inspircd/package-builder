@@ -1,0 +1,27 @@
+Source: inspircd
+Maintainer: InspIRCd Team <noreply@inspircd.org>
+Homepage: https://www.inspircd.org/
+Standards-Version: 4.4.1
+Build-Depends:
+    debhelper,
+    debhelper-compat (= 10),
+    perl,
+    @@DEB_BUILD_DEPS_COMMA@@
+Priority: optional
+Section: net
+
+Package: inspircd
+Architecture: any
+Pre-Depends:
+    ${misc:Pre-Depends},
+Depends:
+    ${misc:Depends},
+    ${perl:Depends},
+    ${shlibs:Depends},
+    lsb-base,
+    @@DEB_RUNTIME_DEPS_COMMA@@
+Provides:
+    ircd,
+Description: Modular C++ IRC server
+    InspIRCd is a modular C++ Internet Relay Chat (IRC) server for UNIX-like
+    and Windows systems.

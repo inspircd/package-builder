@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+
+export INSPIRCD_DISABLE_RPATH=1
+export INSPIRCD_VERBOSE=1
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	for MODULE in @@DEB_MODULES@@; \
+	do \
+		./configure --enable-extras $${MODULE}; \
+	done
+	./configure \
+		--disable-auto-extras \
+		--distribution-label "deb@@INSPIRCD_REVISION@@" \
+		--gid "irc" \
+		--system \
+		--uid "irc"
+
+override_dh_auto_install:
+	dh_auto_install
+	mkdir -p debian/inspircd/lib/systemd/system
+	mv debian/inspircd/usr/share/inspircd/inspircd.service debian/inspircd/lib/systemd/system
+	mkdir -p debian/inspircd/etc/logrotate.d
+	mv debian/inspircd/usr/share/inspircd/logrotate debian/inspircd/etc/logrotate.d/inspircd

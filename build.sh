@@ -27,7 +27,7 @@ if [ -z "${INSPIRCD_PACKAGES}" ]
 then
 	echo "INSPIRCD_PACKAGES is not set; enabling all packages."
 	INSPIRCD_PACKAGES_DEFAULT='1'
-	INSPIRCD_PACKAGES='rpm html'
+	INSPIRCD_PACKAGES='deb rpm html'
 fi
 
 # The INSPIRCD_MODULES variable may be set.
