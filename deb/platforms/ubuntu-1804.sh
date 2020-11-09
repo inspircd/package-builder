@@ -25,20 +25,21 @@ declare -Ax MODULE_BUILD_DEPS=(
 	["sslrehashsignal"]=""
 )
 
+# Note: ${shlibs:Depends} takes care of runtime libraries.
 declare -Ax MODULE_RUNTIME_DEPS=(
-	["argon2"]="libargon2-0"
-	["geo_maxmind"]="libmaxminddb0"
-	["ldap"]="libldap-2.4-2"
-	["mysql"]="libmariadb3 libssl1.1"
-	["pgsql"]="libpq5"
-	["regex_pcre"]="libpcre3"
+	["argon2"]=""
+	["geo_maxmind"]=""
+	["ldap"]=""
+	["mysql"]=""
+	["pgsql"]=""
+	["regex_pcre"]=""
 	["regex_posix"]=""
-	["regex_re2"]="libre2-4"
-	["regex_tre"]="libtre5"
-	["sqlite3"]="libsqlite3-0"
-	["ssl_gnutls"]="gnutls-bin libgnutls30"
-	["ssl_mbedtls"]="libmbedtls12"
-	["ssl_openssl"]="libssl1.1 openssl"
+	["regex_re2"]=""
+	["regex_tre"]=""
+	["sqlite3"]=""
+	["ssl_gnutls"]="gnutls-bin"
+	["ssl_mbedtls"]=""
+	["ssl_openssl"]="openssl"
 	["sslrehashsignal"]=""
 )
 
