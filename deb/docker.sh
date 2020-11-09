@@ -35,7 +35,7 @@ dpkg-buildpackage
 
 # Copy the packages to the output directory.
 echo "${DISTRO_NAME}:" >> ${PACKAGEDB}
-for PACKAGE in "/root/"*.deb "/root/"*.ddeb
+for PACKAGE in $(find /root -maxdepth 1 -name '*.deb' -or -name '*.ddeb')
 do
 	mv ${PACKAGE} ${PACKAGES}
 	echo "  - $(basename ${PACKAGE})" >> ${PACKAGEDB}
