@@ -2,11 +2,11 @@
 
 export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 
-export INSPIRCD_DISABLE_RPATH=1
-export INSPIRCD_VERBOSE=1
-
 %:
 	dh $@
+
+override_dh_auto_build:
+	INSPIRCD_DISABLE_RPATH=1 dh_auto_build
 
 override_dh_auto_configure:
 	for MODULE in @@DEB_MODULES@@; \
