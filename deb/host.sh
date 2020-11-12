@@ -71,6 +71,8 @@ do
 	echo "Building the deb package for ${PLATFORM_NAME} ..."
 	docker pull ${PLATFORM_CONTAINER}
 	docker run --rm \
+		-e "BUILD_GROUP=$(id -g)" \
+		-e "BUILD_USER=$(id -u)" \
 		-e "DISTRO_NAME=${PLATFORM_NAME}" \
 		-e "DISTRO_PACKAGES=${DEB_BUILD_DEPS}" \
 		-e "INSPIRCD_VERSION=${INSPIRCD_VERSION}" \

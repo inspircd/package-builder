@@ -1,11 +1,17 @@
 #!/usr/bin/env ruby
 
-%w(erb yaml).each do |lib|
+%w(erb fileutils yaml).each do |lib|
 	require lib
 end
 
 # The directory that packages are built in.
 INSPIRCD_BUILD_DIR = '/root/packages'
+
+# The group id that should own the output files.
+INSPIRCD_BUILD_GROUP = ENV['BUILD_GROUP'].to_i || 0
+
+# The user id that should own the output files.
+INSPIRCD_BUILD_USER = ENV['BUILD_USER'].to_i || 0
 
 # Read the package index.
 packages = YAML.load_file(File.join(INSPIRCD_BUILD_DIR, 'packages.yml')) rescue nil
@@ -28,3 +34,4 @@ File.open(output, "w") do |fh|
 		.new(template)
 		.result_with_hash(directory: INSPIRCD_BUILD_DIR, packages: packages)
 end
+FileUtils.chown INSPIRCD_BUILD_USER, INSPIRCD_BUILD_GROUP, output

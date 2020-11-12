@@ -29,6 +29,8 @@ rpmbuild -ba ${SPEC}
 echo "${DISTRO_NAME}:" >> ${PACKAGEDB}
 for PACKAGE in "${RPMBUILD}/RPMS/$(uname -p)/"*.rpm "${RPMBUILD}/SRPMS/"*.rpm
 do
+	chown "${BUILD_USER}:${BUILD_GROUP}" ${PACKAGE}
 	mv ${PACKAGE} ${PACKAGES}
 	echo "  - $(basename ${PACKAGE})" >> ${PACKAGEDB}
 done
+chown "${BUILD_USER}:${BUILD_GROUP}" ${PACKAGEDB}

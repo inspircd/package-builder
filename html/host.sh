@@ -9,6 +9,8 @@ echo 'Building the web interface ...'
 # Build the web interface.
 docker pull ruby:slim
 docker run --rm \
+	-e "BUILD_GROUP=$(id -g)" \
+	-e "BUILD_USER=$(id -u)" \
 	-v "${INSPIRCD_ROOT_DIR}/html:/root/sources" \
 	-v "${INSPIRCD_BUILD_DIR}:/root/packages" \
 	-w '/root' \

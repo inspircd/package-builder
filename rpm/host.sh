@@ -64,6 +64,8 @@ do
 	echo "Building the RPM package for ${PLATFORM_NAME} ..."
 	docker pull ${PLATFORM_CONTAINER}
 	docker run --rm \
+		-e "BUILD_GROUP=$(id -g)" \
+		-e "BUILD_USER=$(id -u)" \
 		-e "DISTRO_NAME=${PLATFORM_NAME}" \
 		-e "DISTRO_PACKAGES=${RPM_BUILD_DEPS}" \
 		-v "${INSPIRCD_ROOT_DIR}/rpm:/root/sources" \
