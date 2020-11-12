@@ -1,5 +1,7 @@
 <%
-def human_size(bytes)
+$DIRECTORY = directory
+def human_size(file)
+	bytes = File.size(File.join($DIRECTORY, file))
 	if bytes < 1024
 		"#{bytes} B"
 	elsif bytes < 1_048_576
@@ -32,7 +34,7 @@ end
 			<h2><%= name %></h2>
 			<ul>
 <%  files.each do |file| %>
-				<li><a href="<%= file %>"><%= file %></a> &mdash; <%= human_size(File.size(File.join(directory, file))) %></li>
+				<li><a href="<%= file %>"><%= file %></a> &mdash; <%= human_size(file) %></li>
 <% end %>
 			</ul>
 			<hr>
