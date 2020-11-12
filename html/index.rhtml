@@ -1,5 +1,11 @@
 <%
 $DIRECTORY = directory
+def file_hash(file)
+	require 'digest'
+	sha256 = Digest::SHA256.new
+	sha256.update(File.read(File.join($DIRECTORY, file)))
+	sha256.hexdigest
+end
 def human_size(file)
 	bytes = File.size(File.join($DIRECTORY, file))
 	if bytes < 1024
@@ -26,6 +32,9 @@ end
 			h1 {
 				line-height: 1.2;
 			}
+			li {
+				margin-bottom: 10px;
+			}
 		</style>
 	</head>
 	<body>
@@ -34,7 +43,7 @@ end
 			<h2><%= name %></h2>
 			<ul>
 <%  files.each do |file| %>
-				<li><a href="<%= file %>"><%= file %></a> &mdash; <%= human_size(file) %></li>
+				<li><a href="<%= file %>"><%= file %></a> &mdash; <%= human_size(file) %><br>SHA256: <%= file_hash(file) %></li>
 <% end %>
 			</ul>
 			<hr>
