@@ -4,7 +4,7 @@ then
 	exit 1
 fi
 
-export PLATFORM_NAME="Debian 11 (Bullseye, Unstable)"
+export PLATFORM_NAME="Debian 11 (Bullseye, Testing)"
 export PLATFORM_CONTAINER="debian:bullseye"
 export PLATFORM_SUFFIX="deb11u"
 
