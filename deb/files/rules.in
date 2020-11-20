@@ -9,10 +9,7 @@ override_dh_auto_build:
 	INSPIRCD_DISABLE_RPATH=1 dh_auto_build
 
 override_dh_auto_configure:
-	for MODULE in @@DEB_MODULES@@; \
-	do \
-		./configure --enable-extras $${MODULE}; \
-	done
+	./configure --enable-extras "@@DEB_MODULES@@";
 	./configure \
 		--disable-auto-extras \
 		--distribution-label "deb@@INSPIRCD_REVISION@@" \
@@ -26,3 +23,5 @@ override_dh_auto_install:
 	mv debian/inspircd/usr/share/inspircd/inspircd.service debian/inspircd/lib/systemd/system
 	mkdir -p debian/inspircd/etc/logrotate.d
 	mv debian/inspircd/usr/share/inspircd/logrotate debian/inspircd/etc/logrotate.d/inspircd
+	mkdir -p debian/inspircd/etc/apparmor.d
+	mv debian/inspircd/usr/share/inspircd/apparmor debian/inspircd/etc/apparmor.d/inspircd

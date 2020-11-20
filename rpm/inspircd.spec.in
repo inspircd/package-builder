@@ -35,10 +35,7 @@ exit 0
 %systemd_postun inspircd.service
 
 %build
-for MODULE in @@RPM_MODULES@@
-do
-	./configure --enable-extras ${MODULE}
-done
+./configure --enable-extras "@@RPM_MODULES@@"
 ./configure --disable-auto-extras --distribution-label rpm@@INSPIRCD_REVISION@@ --gid root --system --uid root
 INSPIRCD_DISABLE_RPATH=1 make %{?_smp_mflags}
 
@@ -66,6 +63,7 @@ mv $RPM_BUILD_ROOT/usr/share/inspircd/logrotate $RPM_BUILD_ROOT/etc/logrotate.d/
 /usr/share/doc/inspircd/providers/*.example
 /usr/share/doc/inspircd/services/*.example
 /usr/share/doc/inspircd/sql/*.sql
+/usr/share/inspircd/apparmor
 /usr/share/inspircd/inspircd
 /usr/share/man/man1/inspircd.1.gz
 /usr/share/man/man1/inspircd-*.1.gz
