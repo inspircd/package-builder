@@ -1,0 +1,25 @@
+name: Build Packages
+on:
+  - pull_request
+  - push
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    env:
+      INSPIRCD_PACKAGES: ${{ matrix.package }}
+      INSPIRCD_REVISION: ${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Retrieve latest release
+        run: |
+          echo INSPIRCD_VERSION=$(curl https://api.github.com/repos/inspircd/inspircd/releases | jq --raw-output 'map(select((.draft or .prerelease | not) and (.tag_name | startswith("v3.")))) | first .tag_name | .[1:]') >> $GITHUB_ENV
+      - name: Build packages
+        run: ./build.sh
+      - name: List packages
+        run: cat ./build/packages.yml
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - deb html
+          - rpm html
