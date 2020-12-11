@@ -1,7 +1,7 @@
 Name:           inspircd
 Version:        @@INSPIRCD_VERSION@@
 Release:        @@INSPIRCD_REVISION@@%{?dist}
-Summary:        InspIRCd is a modular Internet Relay Chat (IRC) server.
+Summary:        A modular Internet Relay Chat (IRC) server
 License:        GPLv2
 URL:            https://inspircd.org
 Source0:        https://github.com/inspircd/inspircd/archive/v%{version}.tar.gz
@@ -52,17 +52,17 @@ mv $RPM_BUILD_ROOT/usr/share/inspircd/logrotate $RPM_BUILD_ROOT/etc/logrotate.d/
 %dir %attr(755, inspircd, inspircd) /etc/inspircd
 %dir %attr(755, inspircd, inspircd) /var/inspircd
 %dir %attr(755, inspircd, inspircd) /var/log/inspircd
-/etc/inspircd/help.txt
-/etc/logrotate.d/inspircd
+%config /etc/inspircd/help.txt
+%config /etc/logrotate.d/inspircd
 /usr/lib/inspircd/core_*.so
 /usr/lib/inspircd/m_*.so
 /usr/sbin/inspircd
 /usr/sbin/inspircd-*
-/usr/share/doc/inspircd/*.example
-/usr/share/doc/inspircd/codepages/*.example
-/usr/share/doc/inspircd/providers/*.example
-/usr/share/doc/inspircd/services/*.example
-/usr/share/doc/inspircd/sql/*.sql
+%doc /usr/share/doc/inspircd/*.example
+%doc /usr/share/doc/inspircd/codepages/*.example
+%doc /usr/share/doc/inspircd/providers/*.example
+%doc /usr/share/doc/inspircd/services/*.example
+%doc /usr/share/doc/inspircd/sql/*.sql
 /usr/share/inspircd/apparmor
 /usr/share/inspircd/inspircd
 /usr/share/man/man1/inspircd.1.gz
