@@ -9,6 +9,12 @@ echo 'Building the deb packages ...'
 # Build the deb packages.
 for PLATFORM in ${INSPIRCD_ROOT_DIR}/deb/platforms/*.sh
 do
+	# The INSPIRCD_DEB_PLATFORMS variable may be set.
+	if [ ! -z "${INSPIRCD_DEB_PLATFORMS}" -a ! "${INSPIRCD_DEB_PLATFORMS#*$(basename $PLATFORM .sh)}" != "$INSPIRCD_DEB_PLATFORMS" ]
+	then
+		continue
+	fi
+
 	# Work out what we actually need to do.
 	source ${PLATFORM}
 

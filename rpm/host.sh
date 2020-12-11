@@ -12,6 +12,12 @@ SPECFILE="${INSPIRCD_ROOT_DIR}/rpm/inspircd.spec"
 # Build the RPM packages.
 for PLATFORM in ${INSPIRCD_ROOT_DIR}/rpm/platforms/*.sh
 do
+	# The INSPIRCD_RPM_PLATFORMS variable may be set.
+	if [ ! -z "${INSPIRCD_RPM_PLATFORMS}" -a ! "${INSPIRCD_RPM_PLATFORMS#*$(basename $PLATFORM .sh)}" != "$INSPIRCD_RPM_PLATFORMS" ]
+	then
+		continue
+	fi
+
 	# Work out what we actually need to do.
 	source ${PLATFORM}
 
