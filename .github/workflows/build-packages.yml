@@ -6,6 +6,8 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     env:
+      INSPIRCD_DEB_PLATFORMS: ${{ matrix.package == 'deb' && matrix.platform || null }}
+      INSPIRCD_RPM_PLATFORMS: ${{ matrix.package == 'rpm' && matrix.platform || null }}
       INSPIRCD_PACKAGES: ${{ matrix.package }} html
       INSPIRCD_REVISION: ${{ github.sha }}
     steps:
@@ -20,6 +22,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        package:
-          - deb
-          - rpm
+        include:
+          - package: deb
+            platform: debian-10
+          - package: deb
+            platform: debian-11
+          - package: deb
+            platform: ubuntu-1804
+          - package: deb
+            platform: ubuntu-2004
+          - package: rpm
+            platform: centos-7
+          - package: rpm
+            platform: centos-8
