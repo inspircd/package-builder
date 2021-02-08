@@ -25,7 +25,7 @@ apt-get install --assume-yes --no-install-recommends \
 	${DISTRO_PACKAGES}
 
 # Download and unpack the InspIRCd source code.
-wget "https://github.com/inspircd/inspircd/archive/v${INSPIRCD_VERSION}.tar.gz"
+wget "https://github.com/${INSPIRCD_REPOSITORY}/archive/v${INSPIRCD_VERSION}.tar.gz"
 tar fx "v${INSPIRCD_VERSION}.tar.gz"
 
 # Set up and build the package.

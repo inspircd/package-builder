@@ -60,6 +60,7 @@ do
 
 	# Create the specfile for this platform.
 	cp -f "${SPECFILE}.in" ${SPECFILE}
+	sed -i "s*@@INSPIRCD_REPOSITORY@@*${INSPIRCD_REPOSITORY}*g" ${SPECFILE}
 	sed -i "s/@@INSPIRCD_VERSION@@/${INSPIRCD_VERSION}/g" ${SPECFILE}
 	sed -i "s/@@INSPIRCD_REVISION@@/${INSPIRCD_REVISION}/g" ${SPECFILE}
 	sed -i "s/@@RPM_BUILD_DEPS@@/${RPM_BUILD_DEPS}/g" ${SPECFILE}

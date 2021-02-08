@@ -22,6 +22,12 @@ then
 	INSPIRCD_REVISION='1'
 fi
 
+# The INSPIRCD_REPOSITORY variable may be set.
+if [ -z "${INSPIRCD_REPOSITORY}" ]
+then
+	INSPIRCD_REPOSITORY='inspircd/inspircd'
+fi
+
 # The INSPIRCD_PACKAGES variable may be set.
 if [ -z "${INSPIRCD_PACKAGES}" ]
 then

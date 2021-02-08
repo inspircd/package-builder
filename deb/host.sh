@@ -81,6 +81,7 @@ do
 		-e "BUILD_USER=$(id -u)" \
 		-e "DISTRO_NAME=${PLATFORM_NAME}" \
 		-e "DISTRO_PACKAGES=${DEB_BUILD_DEPS}" \
+		-e "INSPIRCD_REPOSITORY=${INSPIRCD_REPOSITORY}" \
 		-e "INSPIRCD_VERSION=${INSPIRCD_VERSION}" \
 		-v "${INSPIRCD_ROOT_DIR}/deb:/root/sources" \
 		-v "${INSPIRCD_BUILD_DIR}:/root/packages" \

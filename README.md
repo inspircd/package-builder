@@ -31,6 +31,10 @@ The packages will be built into the `./build` directory.
 
 The following environment variables can be set to change the behaviour of the build scripts:
 
+#### INSPIRCD_REPOSITORY (default: `inspircd/inspircd`)
+
+The GitHub repository to build the specified version from. This is useful if you have a custom fork you want to test changes in.
+
 #### INSPIRCD_MODULES (default: *varies*)
 
 A space-delimited list of the [extra modules](https://docs.inspircd.org/3/modules/#extra-modules) to build. If not set it defaults to all of the modules which have dependencies available and can legally be shipped in binary form.
