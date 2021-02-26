@@ -27,6 +27,12 @@ exit 0
 
 %post
 %systemd_post inspircd.service
+if [ -d '/var/inspircd' ]
+then
+	echo Migrating /var/inspircd to /var/lib/inspircd ...
+	mv -n /var/inspircd/* /var/lib/inspircd
+	echo "InspIRCd data files were migrated to /var/inspircd. You can delete this directory." > /var/inspircd/readme.txt
+fi
 
 %preun
 %systemd_preun inspircd.service
@@ -50,7 +56,7 @@ mv $RPM_BUILD_ROOT/usr/share/inspircd/logrotate $RPM_BUILD_ROOT/etc/logrotate.d/
 %files
 %define _unpackaged_files_terminate_build 1
 %dir %attr(755, inspircd, inspircd) /etc/inspircd
-%dir %attr(755, inspircd, inspircd) /var/inspircd
+%dir %attr(755, inspircd, inspircd) /var/lib/inspircd
 %dir %attr(755, inspircd, inspircd) /var/log/inspircd
 %config /etc/inspircd/help.txt
 %config /etc/logrotate.d/inspircd
