@@ -30,8 +30,8 @@ declare -Ax MODULE_RUNTIME_DEPS=(
 	["regex_posix"]=""
 	["regex_stdlib"]=""
 	["sqlite3"]="sqlite"
-	["ssl_gnutls"]="gnutls"
-	["ssl_openssl"]="openssl"
+	["ssl_gnutls"]="gnutls perl-IO-Socket-SSL"
+	["ssl_openssl"]="openssl perl-IO-Socket-SSL"
 	["sslrehashsignal"]=""
 )
 
