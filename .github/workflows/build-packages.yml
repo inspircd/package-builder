@@ -28,9 +28,9 @@ jobs:
           - package: deb
             platform: debian-11
           - package: deb
-            platform: ubuntu-1804
+            platform: ubuntu-18-04
           - package: deb
-            platform: ubuntu-2004
+            platform: ubuntu-20-04
           - package: rpm
             platform: centos-7
           - package: rpm
