@@ -14,6 +14,7 @@ override_dh_auto_configure:
 		--disable-auto-extras \
 		--distribution-label "deb@@INSPIRCD_REVISION@@" \
 		--gid "irc" \
+		--runtime-dir "/run/inspircd" \
 		--system \
 		--uid "irc"
 
