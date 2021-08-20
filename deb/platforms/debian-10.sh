@@ -4,7 +4,7 @@ then
 	exit 1
 fi
 
-export PLATFORM_NAME="Debian 10 (Buster, Stable)"
+export PLATFORM_NAME="Debian 10 (Buster)"
 export PLATFORM_CONTAINER="debian:buster"
 export PLATFORM_SUFFIX="deb10u"
 
