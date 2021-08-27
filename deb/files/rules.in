@@ -14,13 +14,11 @@ override_dh_auto_configure:
 		--disable-auto-extras \
 		--distribution-label "deb@@INSPIRCD_REVISION@@" \
 		--gid "irc" \
-		--runtime-dir "/run/inspircd" \
 		--system \
 		--uid "irc"
 
 override_dh_auto_install:
 	dh_auto_install
-	install -d -g irc -o irc -m 0755 debian/inspircd/var/run/inspircd
 	mkdir -p debian/inspircd/lib/systemd/system
 	mv debian/inspircd/usr/share/inspircd/inspircd.service debian/inspircd/lib/systemd/system
 	mkdir -p debian/inspircd/etc/logrotate.d

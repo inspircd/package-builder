@@ -23,7 +23,7 @@ BSD, Windows and macOS systems.
 %pre
 getent group inspircd >/dev/null || groupadd --system inspircd
 getent passwd inspircd >/dev/null || useradd --system --comment "InspIRCd" --gid inspircd --home-dir /dev/null --shell /sbin/nologin inspircd
-install -d -g inspircd -o inspircd -m 0755 /var/run/inspircd
+exit 0
 
 %post
 %systemd_post inspircd.service
