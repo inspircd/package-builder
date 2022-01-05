@@ -4,8 +4,8 @@ then
 	exit 1
 fi
 
-export PLATFORM_NAME="CentOS 8"
-export PLATFORM_CONTAINER="centos:8"
+export PLATFORM_NAME="Rocky Linux 8"
+export PLATFORM_CONTAINER="rockylinux/rockylinux:8"
 
 declare -Ax MODULE_BUILD_DEPS=(
 	["geo_maxmind"]="libmaxminddb-devel pkgconfig"
@@ -36,10 +36,10 @@ declare -Ax MODULE_RUNTIME_DEPS=(
 )
 
 declare -Ax MODULE_ERRORS=(
-	["argon2"]="Argon2 is not packaged by CentOS 8"
-	["regex_re2"]="RE2 is not is not packaged by CentOS 8"
-	["regex_tre"]="TRE is not is not packaged by CentOS 8"
-	["ssl_mbedtls"]="mbedTLS is not packaged by CentOS 8"
+	["argon2"]="Argon2 is not packaged by Rocky Linux 8"
+	["regex_re2"]="RE2 is not is not packaged by Rocky Linux 8"
+	["regex_tre"]="TRE is not is not packaged by Rocky Linux 8"
+	["ssl_mbedtls"]="mbedTLS is not packaged by Rocky Linux 8"
 )
 
 declare -Ax MODULE_WARNINGS=()
