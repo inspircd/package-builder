@@ -10,6 +10,7 @@ jobs:
     env:
       INSPIRCD_DEB_PLATFORMS: ${{ matrix.package == 'deb' && matrix.platform || null }}
       INSPIRCD_RPM_PLATFORMS: ${{ matrix.package == 'rpm' && matrix.platform || null }}
+      INSPIRCD_IGNORE_WARNINGS: 1
       INSPIRCD_PACKAGES: ${{ matrix.package }} html
       INSPIRCD_REVISION: ${{ github.sha }}
     steps:
