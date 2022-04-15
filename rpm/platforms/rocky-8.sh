@@ -5,7 +5,7 @@ then
 fi
 
 export PLATFORM_NAME="Rocky Linux 8"
-export PLATFORM_CONTAINER="rockylinux/rockylinux:8"
+export PLATFORM_CONTAINER="rockylinux:8"
 
 declare -Ax MODULE_BUILD_DEPS=(
 	["geo_maxmind"]="libmaxminddb-devel pkgconfig"
