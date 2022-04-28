@@ -28,12 +28,6 @@ apt-get install --assume-yes --no-install-recommends \
 wget "https://github.com/${INSPIRCD_REPOSITORY}/archive/v${INSPIRCD_VERSION}.tar.gz"
 tar fx "v${INSPIRCD_VERSION}.tar.gz"
 
-# Apply patches.
-for patch in 63aa0a11e050483ece19b88da3251bcff3bb032e
-do
-	wget -O - https://github.com/${INSPIRCD_REPOSITORY}/commit/${patch}.patch | patch -d${SOURCECODE} -p1
-done
-
 # Set up and build the package.
 mv "${SOURCES}/debian" ${SOURCECODE}
 cd ${SOURCECODE}

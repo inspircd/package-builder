@@ -5,7 +5,6 @@ Summary:        A modular Internet Relay Chat (IRC) server
 License:        GPLv2
 URL:            https://inspircd.org
 Source0:        https://github.com/@@INSPIRCD_REPOSITORY@@/archive/v%{version}.tar.gz
-Patch0:         https://github.com/inspircd/inspircd/commit/8dfea307301ff2cad2c2442588c589dc5d2c326f.patch
 
 BuildRequires:    systemd @@RPM_BUILD_DEPS@@
 Requires:         systemd @@RPM_RUNTIME_DEPS@@
@@ -20,7 +19,6 @@ BSD, Windows and macOS systems.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %pre
 getent group inspircd >/dev/null || groupadd --system inspircd
