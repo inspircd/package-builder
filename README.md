@@ -7,7 +7,7 @@ This repository contains scripts for building InspIRCd packages. Currently, it h
 * deb on Debian 10, 11, and 12
 * deb on Ubuntu 18.04, 20.04, and 22.04
 * RPM on CentOS 7
-* RPM on Rocky Linux 8
+* RPM on Rocky Linux 8 and 9
 
 Support for packaging systems and platforms is planned. See the [open issues](https://github.com/inspircd/inspircd-packages/issues/3) for details.
 
