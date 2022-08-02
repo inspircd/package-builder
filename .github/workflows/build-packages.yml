@@ -27,8 +27,6 @@ jobs:
       matrix:
         include:
           - package: deb
-            platform: debian-10
-          - package: deb
             platform: debian-11
           - package: deb
             platform: debian-12
