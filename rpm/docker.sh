@@ -13,10 +13,18 @@ PACKAGEDB="${PACKAGES}/packages.yml"
 # The directory that the RPM packages are built in.
 RPMBUILD='/root/rpmbuild'
 
+# Enable development package repositories.
+shopt -s nullglob
+for REPO in /etc/yum.repos.d/*-[Dd]evel.repo
+do
+	sed -i "s/^enabled=0$/enabled=1/g" ${REPO}
+done
+
 # Install the required tools and development packages.
 yum install --assumeyes \
 	gcc-c++ \
 	make \
+	perl \
 	rpmdevtools \
 	${DISTRO_PACKAGES}
 
