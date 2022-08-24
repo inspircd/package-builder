@@ -41,9 +41,14 @@ fi
 %systemd_postun inspircd.service
 
 %build
-./configure --enable-extras "@@RPM_MODULES@@"
-./configure --disable-auto-extras --distribution-label rpm@@INSPIRCD_REVISION@@ --gid root --system --uid root
-INSPIRCD_DISABLE_RPATH=1 make %{?_smp_mflags}
+./configure \
+	--enable-extras "@@RPM_MODULES@@"
+./configure \
+	--disable-auto-extras \
+	--disable-ownership \
+	--distribution-label rpm@@INSPIRCD_REVISION@@ \
+	--system
+CPPFLAGS="${CPPFLAGS} -DINSPIRCD_BINARY_EXIT" INSPIRCD_DISABLE_RPATH=1 make %{?_smp_mflags}
 
 %install
 rm -fr $RPM_BUILD_ROOT
@@ -62,8 +67,8 @@ mv $RPM_BUILD_ROOT/usr/share/inspircd/logrotate $RPM_BUILD_ROOT/etc/logrotate.d/
 %config /etc/logrotate.d/inspircd
 /usr/lib/inspircd/core_*.so
 /usr/lib/inspircd/m_*.so
-/usr/sbin/inspircd
-/usr/sbin/inspircd-*
+/usr/bin/inspircd
+/usr/bin/inspircd-*
 %doc /usr/share/doc/inspircd/*.example
 %doc /usr/share/doc/inspircd/codepages/*.example
 %doc /usr/share/doc/inspircd/providers/*.example
