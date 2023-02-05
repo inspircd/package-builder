@@ -1,7 +1,0 @@
-#!/bin/sh
-if [ -d '/var/inspircd' ]
-then
-	echo Migrating /var/inspircd to /var/lib/inspircd ...
-	mv -n /var/inspircd/* /var/lib/inspircd
-	echo "InspIRCd data files were migrated to /var/inspircd. You can delete this directory." > /var/inspircd/readme.txt
-fi

@@ -44,6 +44,7 @@ fi
 ./configure \
 	--enable-extras "@@RPM_MODULES@@"
 ./configure \
+	--development \
 	--disable-auto-extras \
 	--disable-ownership \
 	--distribution-label rpm@@INSPIRCD_REVISION@@ \
@@ -73,7 +74,8 @@ mv $RPM_BUILD_ROOT/usr/share/inspircd/logrotate $RPM_BUILD_ROOT/etc/logrotate.d/
 %doc /usr/share/doc/inspircd/codepages/*.example
 %doc /usr/share/doc/inspircd/providers/*.example
 %doc /usr/share/doc/inspircd/services/*.example
-%doc /usr/share/doc/inspircd/sql/*.sql
+%doc /usr/share/doc/inspircd/sql/log_sql/*
+%doc /usr/share/doc/inspircd/sql/sqloper/*
 /usr/share/inspircd/apparmor
 /usr/share/inspircd/inspircd
 /usr/share/man/man1/inspircd.1.gz

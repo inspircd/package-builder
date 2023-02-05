@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Retrieve latest release
         run: |
-          echo INSPIRCD_VERSION=$(curl https://api.github.com/repos/inspircd/inspircd/releases | jq --raw-output 'map(select((.draft or .prerelease | not) and (.tag_name | startswith("v3.")))) | first .tag_name | .[1:]') >> $GITHUB_ENV
+          echo INSPIRCD_VERSION=$(curl https://api.github.com/repos/inspircd/inspircd/releases | jq --raw-output 'map(select((.draft | not) and (.tag_name | startswith("v4.")))) | first .tag_name | .[1:]') >> $GITHUB_ENV
       - name: Build packages
         run: ./build.sh
       - name: List packages
@@ -31,13 +31,9 @@ jobs:
           - package: deb
             platform: debian-12
           - package: deb
-            platform: ubuntu-18-04
-          - package: deb
             platform: ubuntu-20-04
           - package: deb
             platform: ubuntu-22-04
-          - package: rpm
-            platform: centos-7
           - package: rpm
             platform: rocky-8
           - package: rpm
