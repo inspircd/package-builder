@@ -49,6 +49,4 @@ declare -Ax MODULE_RUNTIME_DEPS=(
 
 declare -Ax MODULE_ERRORS=()
 
-declare -Ax MODULE_WARNINGS=(
-	["mysql"]="OpenSSL's license (custom) is not compatible with InspIRCd's (GPLv2)"
-)
+declare -Ax MODULE_WARNINGS=()
