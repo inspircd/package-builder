@@ -8,6 +8,9 @@ export PLATFORM_NAME="Ubuntu 20.04 (Focal Fossa)"
 export PLATFORM_CONTAINER="ubuntu:focal"
 export PLATFORM_SUFFIX="ubuntu20.04."
 
+export CORE_BUILD_DEPS="libpsl-dev pkg-config"
+export CORE_RUNTIME_DEPS="libpsl5"
+
 declare -Ax MODULE_BUILD_DEPS=(
 	["argon2"]="libargon2-dev pkg-config"
 	["geo_maxmind"]="libmaxminddb-dev pkg-config"

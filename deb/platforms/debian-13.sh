@@ -8,6 +8,9 @@ export PLATFORM_NAME="Debian 13 (Trixie)"
 export PLATFORM_CONTAINER="debian:trixie"
 export PLATFORM_SUFFIX="deb13u"
 
+export CORE_BUILD_DEPS="libpsl-dev pkg-config"
+export CORE_RUNTIME_DEPS="libpsl5"
+
 declare -Ax MODULE_BUILD_DEPS=(
 	["argon2"]="libargon2-dev pkg-config"
 	["geo_maxmind"]="libmaxminddb-dev pkg-config"
