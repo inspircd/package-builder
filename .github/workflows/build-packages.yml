@@ -31,8 +31,6 @@ jobs:
           - package: deb
             platform: debian-12
           - package: deb
-            platform: ubuntu-18-04
-          - package: deb
             platform: ubuntu-20-04
           - package: deb
             platform: ubuntu-22-04
