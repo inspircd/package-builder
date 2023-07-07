@@ -4,7 +4,7 @@
 
 This repository contains scripts for building InspIRCd packages. Currently, it has support for:
 
-* deb on Debian 11 and 12
+* deb on Debian 11, 12, and 13
 * deb on Ubuntu 20.04 and 22.04
 * RPM on CentOS 7
 * RPM on Rocky Linux 8 and 9
