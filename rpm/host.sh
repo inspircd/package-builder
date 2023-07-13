@@ -58,6 +58,12 @@ do
 		fi
 	done
 
+	# Install LWP at build time if we are installing contrib modules.
+	if [ ! -z "${INSPIRCD_CONTRIB}" ]
+	then
+		RPM_BUILD_DEPS="${RPM_BUILD_DEPS} perl-libwww-perl perl-LWP-Protocol-https"
+	fi
+
 	# Remove duplicate packages.
 	RPM_BUILD_DEPS=`echo ${RPM_BUILD_DEPS} | sort -u`
 	RPM_RUNTIME_DEPS=`echo ${RPM_RUNTIME_DEPS} | sort -u`
@@ -79,6 +85,7 @@ do
 		-e "BUILD_USER=$(id -u)" \
 		-e "DISTRO_NAME=${PLATFORM_NAME}" \
 		-e "DISTRO_PACKAGES=${RPM_BUILD_DEPS}" \
+		-e "INSPIRCD_CONTRIB=${INSPIRCD_CONTRIB}" \
 		-v "${INSPIRCD_ROOT_DIR}/rpm:/root/sources" \
 		-v "${INSPIRCD_BUILD_DIR}:/root/packages" \
 		-w '/root' \

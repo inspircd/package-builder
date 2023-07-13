@@ -31,9 +31,9 @@ The packages will be built into the `./build` directory.
 
 The following environment variables can be set to change the behaviour of the build scripts:
 
-#### INSPIRCD_REPOSITORY (default: `inspircd/inspircd`)
+#### INSPIRCD_CONTRIB (default: *none*)
 
-The GitHub repository to build the specified version from. This is useful if you have a custom fork you want to test changes in.
+A space-delimited list of the [contrib modules](https://github.com/inspircd/inspircd-contrib) to install and build. These modules are maintained by third parties and are not supported by the InspIRCd Team.
 
 #### INSPIRCD_MODULES (default: *varies*)
 
@@ -48,6 +48,10 @@ Name | Description
 deb  | Build the deb packages for Debian-based distributions.
 rpm  | Build the RPM packages for RHEL-based distributions.
 html | Build the web index for the packages. Should always be listed last.
+
+#### INSPIRCD_REPOSITORY (default: `inspircd/inspircd`)
+
+The GitHub repository to build the specified version from. This is useful if you have a custom fork you want to test changes in.
 
 #### INSPIRCD_REVISION (default: `1`)
 
