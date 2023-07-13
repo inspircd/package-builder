@@ -51,6 +51,12 @@ do
 		fi
 	done
 
+	# Install LWP at build time if we are installing contrib modules.
+	if [ ! -z "${INSPIRCD_CONTRIB}" ]
+	then
+		DEB_BUILD_DEPS="${DEB_BUILD_DEPS} libio-socket-ssl-perl libwww-perl"
+	fi
+
 	# Remove duplicate packages.
 	DEB_BUILD_DEPS=`echo ${DEB_BUILD_DEPS} | sort -u`
 	DEB_RUNTIME_DEPS=`echo ${DEB_RUNTIME_DEPS} | sort -u`
@@ -81,6 +87,7 @@ do
 		-e "BUILD_USER=$(id -u)" \
 		-e "DISTRO_NAME=${PLATFORM_NAME}" \
 		-e "DISTRO_PACKAGES=${DEB_BUILD_DEPS}" \
+		-e "INSPIRCD_CONTRIB=${INSPIRCD_CONTRIB}" \
 		-e "INSPIRCD_REPOSITORY=${INSPIRCD_REPOSITORY}" \
 		-e "INSPIRCD_VERSION=${INSPIRCD_VERSION}" \
 		-v "${INSPIRCD_ROOT_DIR}/deb:/root/sources" \

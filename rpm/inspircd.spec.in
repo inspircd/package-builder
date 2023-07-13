@@ -41,6 +41,10 @@ fi
 %systemd_postun inspircd.service
 
 %build
+if [ ! -z "${INSPIRCD_CONTRIB}" ]
+then
+	./modulemanager install ${INSPIRCD_CONTRIB}
+fi
 ./configure \
 	--enable-extras "@@RPM_MODULES@@"
 ./configure \

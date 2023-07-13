@@ -32,6 +32,10 @@ The packages will be built into the `./build` directory.
 
 The following environment variables can be set to change the behaviour of the build scripts:
 
+#### INSPIRCD_CONTRIB (default: *none*)
+
+A space-delimited list of the [contrib modules](https://github.com/inspircd/inspircd-contrib) to install and build. These modules are maintained by third parties and are not supported by the InspIRCd Team.
+
 #### INSPIRCD_MODULES (default: *varies*)
 
 A space-delimited list of the [extra modules](https://docs.inspircd.org/3/modules/#extra-modules) to build. If not set it defaults to all of the modules which have dependencies available and can legally be shipped in binary form.
