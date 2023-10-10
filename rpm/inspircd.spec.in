@@ -61,6 +61,7 @@ mkdir -p $RPM_BUILD_ROOT%{_unitdir}
 mv $RPM_BUILD_ROOT/usr/share/inspircd/inspircd.service $RPM_BUILD_ROOT%{_unitdir}
 mkdir -p $RPM_BUILD_ROOT/etc/logrotate.d
 mv $RPM_BUILD_ROOT/usr/share/inspircd/logrotate $RPM_BUILD_ROOT/etc/logrotate.d/inspircd
+rm $RPM_BUILD_ROOT/usr/share/inspircd/inspircd
 
 %files
 %define _unpackaged_files_terminate_build 1
