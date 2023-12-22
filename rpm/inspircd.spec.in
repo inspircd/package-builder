@@ -79,6 +79,7 @@ mv $RPM_BUILD_ROOT/usr/share/inspircd/logrotate $RPM_BUILD_ROOT/etc/logrotate.d/
 %doc /usr/share/doc/inspircd/services/*.example
 %doc /usr/share/doc/inspircd/sql/*.sql
 /usr/share/inspircd/apparmor
+/usr/share/inspircd/deploy-ssl.sh
 /usr/share/inspircd/inspircd
 /usr/share/man/man1/inspircd.1.gz
 /usr/share/man/man1/inspircd-*.1.gz
