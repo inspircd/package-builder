@@ -16,6 +16,9 @@ def human_size(file)
 		"#{(bytes / 1_048_576.0).round(2)} MiB"
 	end
 end
+def release_file(files)
+	files.find { |file| file !~ /(?:-dbgsym_|-debug(?:info|source)-|\.src\.)/ }
+end
 %>
 <!DOCTYPE html>
 <html>
@@ -39,6 +42,16 @@ end
 	</head>
 	<body>
 		<h1>InspIRCd Packages</h1>
+			<h2>GitHub Table</h2>
+			<pre>
+Platform                       | File                                     | SHA256
+------------------------------ | ---------------------------------------- | ------
+<% packages.each do |name, files| %>
+<%= name.ljust(30) %> | <%= release_file(files).ljust(40).gsub('~', '.') %> | <%= file_hash(release_file(files)) %>
+
+<% end %>
+			</pre>
+			<hr>
 <% packages.each do |name, files| %>
 			<h2><%= name %></h2>
 			<ul>

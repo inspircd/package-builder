@@ -31,7 +31,7 @@ end
 output = File.join(INSPIRCD_BUILD_DIR, "index.html")
 File.open(output, "w") do |fh|
 	fh.puts ERB
-		.new(template)
+		.new(template, trim_mode: '<>')
 		.result_with_hash(directory: INSPIRCD_BUILD_DIR, packages: packages)
 end
 FileUtils.chown INSPIRCD_BUILD_USER, INSPIRCD_BUILD_GROUP, output
