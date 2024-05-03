@@ -24,7 +24,6 @@ declare -Ax MODULE_BUILD_DEPS=(
 	["regex_re2"]="libre2-dev pkg-config"
 	["sqlite3"]="libsqlite3-dev pkg-config"
 	["ssl_gnutls"]="libgnutls28-dev pkg-config"
-	["ssl_mbedtls"]="libmbedtls-dev"
 	["ssl_openssl"]="libssl-dev pkg-config"
 	["sslrehashsignal"]=""
 )
@@ -43,7 +42,6 @@ declare -Ax MODULE_RUNTIME_DEPS=(
 	["regex_re2"]=""
 	["sqlite3"]=""
 	["ssl_gnutls"]="gnutls-bin libio-socket-ssl-perl"
-	["ssl_mbedtls"]="libio-socket-ssl-perl"
 	["ssl_openssl"]="libio-socket-ssl-perl openssl"
 	["sslrehashsignal"]=""
 )
