@@ -42,7 +42,7 @@ if [ -z "${INSPIRCD_MODULES}" ]
 then
 	echo "INSPIRCD_MODULES is not set; enabling all modules."
 	INSPIRCD_MODULES_DEFAULT='1'
-	INSPIRCD_MODULES='argon2 geo_maxmind ldap log_json log_syslog mysql pgsql regex_pcre regex_posix regex_re2 sqlite3 ssl_gnutls ssl_openssl sslrehashsignal'
+	INSPIRCD_MODULES='argon2 geo_maxmind ldap log_json log_syslog mysql pgsql regex_pcre2 regex_posix regex_re2 sqlite3 ssl_gnutls ssl_openssl sslrehashsignal'
 fi
 
 # Modules which should not be packaged.
