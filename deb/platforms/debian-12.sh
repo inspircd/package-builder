@@ -9,7 +9,7 @@ export PLATFORM_CONTAINER="debian:bookworm"
 export PLATFORM_SUFFIX="deb12u"
 
 export CORE_BUILD_DEPS="libpsl-dev pkg-config"
-export CORE_RUNTIME_DEPS="libpsl5"
+export CORE_RUNTIME_DEPS="publicsuffix"
 
 declare -Ax MODULE_BUILD_DEPS=(
 	["argon2"]="libargon2-dev pkg-config"
