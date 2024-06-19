@@ -79,12 +79,12 @@ cp docs/LICENSE.txt $RPM_BUILD_ROOT/usr/share/doc/inspircd
 /usr/bin/inspircd-*
 %doc /usr/share/doc/inspircd/AUTHORS.txt
 %doc /usr/share/doc/inspircd/LICENSE.txt
-%doc /usr/share/doc/inspircd/*.example
-%doc /usr/share/doc/inspircd/codepages/*.example
-%doc /usr/share/doc/inspircd/providers/*.example
-%doc /usr/share/doc/inspircd/services/*.example
-%doc /usr/share/doc/inspircd/sql/log_sql/*
-%doc /usr/share/doc/inspircd/sql/sqloper/*
+%doc /usr/share/doc/inspircd/examples/*.example.*
+%doc /usr/share/doc/inspircd/examples/codepages/*.example.*
+%doc /usr/share/doc/inspircd/examples/providers/*.example.*
+%doc /usr/share/doc/inspircd/examples/services/*.example.*
+%doc /usr/share/doc/inspircd/examples/sql/log_sql/*
+%doc /usr/share/doc/inspircd/examples/sql/sqloper/*
 /usr/share/inspircd/apparmor
 /usr/share/inspircd/deploy-ssl.sh
 /usr/share/man/man1/inspircd.1.gz
