@@ -1,10 +1,10 @@
 Source: inspircd
 Maintainer: InspIRCd Team <noreply@inspircd.org>
 Homepage: https://www.inspircd.org/
-Standards-Version: 4.4.1
+Standards-Version: 4.6.0
 Build-Depends:
     debhelper,
-    debhelper-compat (= 10),
+    debhelper-compat (= 13),
     perl,
     @@DEB_BUILD_DEPS_COMMA@@
 Priority: optional
