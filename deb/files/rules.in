@@ -6,7 +6,7 @@ export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 	dh $@
 
 override_dh_auto_build:
-	CPPFLAGS="${CPPFLAGS} -DINSPIRCD_BINARY_EXIT" INSPIRCD_DISABLE_RPATH=1 dh_auto_build
+	INSPIRCD_DISABLE_RPATH=1 dh_auto_build
 
 override_dh_auto_configure:
 	if [ ! -z "${INSPIRCD_CONTRIB}" ]; \

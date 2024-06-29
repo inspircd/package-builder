@@ -53,7 +53,7 @@ fi
 	--disable-ownership \
 	--distribution-label rpm@@INSPIRCD_REVISION@@ \
 	--system
-CPPFLAGS="${CPPFLAGS} -DINSPIRCD_BINARY_EXIT" INSPIRCD_DISABLE_RPATH=1 make %{?_smp_mflags}
+INSPIRCD_DISABLE_RPATH=1 make %{?_smp_mflags}
 
 %install
 rm -fr $RPM_BUILD_ROOT
