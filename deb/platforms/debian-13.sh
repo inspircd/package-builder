@@ -41,8 +41,8 @@ declare -Ax MODULE_RUNTIME_DEPS=(
 	["regex_posix"]=""
 	["regex_re2"]=""
 	["sqlite3"]=""
-	["ssl_gnutls"]="gnutls-bin libio-socket-ssl-perl"
-	["ssl_openssl"]="libio-socket-ssl-perl openssl"
+	["ssl_gnutls"]="libio-socket-ssl-perl"
+	["ssl_openssl"]="libio-socket-ssl-perl"
 	["sslrehashsignal"]=""
 )
 
