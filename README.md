@@ -8,7 +8,7 @@ This repository contains scripts for building InspIRCd packages. Currently, it h
 * deb on Ubuntu 22.04 and 24.04
 * RPM on Rocky Linux 8 and 9
 
-Support for packaging systems and platforms is planned. See the [open issues](https://github.com/inspircd/inspircd-packages/issues/3) for details.
+Support for packaging systems and platforms is planned. See the [open issues](https://github.com/inspircd/package-builder/issues) for details.
 
 ### Requirements
 
