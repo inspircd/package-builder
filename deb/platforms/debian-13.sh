@@ -14,7 +14,6 @@ declare -Ax MODULE_BUILD_DEPS=(
 	["ldap"]="libldap2-dev"
 	["mysql"]="default-libmysqlclient-dev"
 	["pgsql"]="libpq-dev"
-	["regex_pcre"]="libpcre3-dev"
 	["regex_pcre2"]="libpcre2-dev"
 	["regex_posix"]=""
 	["regex_re2"]="libre2-dev pkg-config"
@@ -34,7 +33,6 @@ declare -Ax MODULE_RUNTIME_DEPS=(
 	["ldap"]=""
 	["mysql"]=""
 	["pgsql"]=""
-	["regex_pcre"]=""
 	["regex_pcre2"]=""
 	["regex_posix"]=""
 	["regex_re2"]=""
@@ -47,6 +45,8 @@ declare -Ax MODULE_RUNTIME_DEPS=(
 	["sslrehashsignal"]=""
 )
 
-declare -Ax MODULE_ERRORS=()
+declare -Ax MODULE_ERRORS=(
+	["regex_pcre"]="PCRE1 is not packaged by Debian Trixie"
+)
 
 declare -Ax MODULE_WARNINGS=()
