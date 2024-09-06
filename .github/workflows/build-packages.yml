@@ -40,8 +40,6 @@ jobs:
           - package: deb
             platform: ubuntu-24-04
           - package: rpm
-            platform: centos-7
-          - package: rpm
             platform: rocky-8
           - package: rpm
             platform: rocky-9
