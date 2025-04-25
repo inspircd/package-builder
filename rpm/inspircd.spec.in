@@ -69,6 +69,7 @@ cp docs/LICENSE.txt $RPM_BUILD_ROOT/usr/share/doc/inspircd
 %files
 %define _unpackaged_files_terminate_build 1
 %dir %attr(755, inspircd, inspircd) /etc/inspircd
+%dir %attr(755, inspircd, inspircd) /run/inspircd
 %dir %attr(755, inspircd, inspircd) /var/lib/inspircd
 %dir %attr(755, inspircd, inspircd) /var/log/inspircd
 %config /etc/inspircd/help.txt
