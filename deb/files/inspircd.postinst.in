@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+if [ "$1" = "configure" ]
+then
+    for directory in /etc/inspircd /run/inspircd /var/lib/inspircd /var/log/inspircd
+    do
+        chown -R "irc:irc" -- $directory
+    done
+fi
+
