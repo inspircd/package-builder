@@ -1,5 +1,5 @@
-inspircd (@@INSPIRCD_VERSION@@~@@PLATFORM_SUFFIX@@@@INSPIRCD_REVISION@@) unstable; urgency=medium
+inspircd (@@INSPIRCD_VERSION@@~@@PLATFORM_SUFFIX@@@@INSPIRCD_REVISION@@) stable; urgency=medium
 
-  * Release @@INSPIRCD_VERSION@@~@@PLATFORM_SUFFIX@@@@INSPIRCD_REVISION@@.
+  * Release @@INSPIRCD_VERSION@@~@@PLATFORM_SUFFIX@@@@INSPIRCD_REVISION@@. This is the INSPIRCD full modules package
 
- -- InspIRCd Team <noreply@inspircd.org>  @@DEB_BUILD_STAMP@@
+ -- ARKFUTURE <ARKFUTURESTUDIO@GMAIL.COM>  @@DEB_BUILD_STAMP@@

@@ -15,6 +15,7 @@ SOURCECODE="/root/inspircd-${INSPIRCD_VERSION}"
 
 # Install the required tools and development packages.
 export DEBIAN_FRONTEND=noninteractive
+sed -i s@/deb.debian.org/@/mirrors.ustc.edu.cn/@g /etc/apt/sources.list.d/debian.sources
 apt-get update
 apt-get install --assume-yes --no-install-recommends \
 	build-essential \
@@ -25,7 +26,7 @@ apt-get install --assume-yes --no-install-recommends \
 	${DISTRO_PACKAGES}
 
 # Download and unpack the InspIRCd source code.
-wget "https://github.com/${INSPIRCD_REPOSITORY}/archive/v${INSPIRCD_VERSION}.tar.gz"
+wget "https://ghfast.top/https://github.com/${INSPIRCD_REPOSITORY}/archive/v${INSPIRCD_VERSION}.tar.gz"
 tar fx "v${INSPIRCD_VERSION}.tar.gz"
 
 # Set up and build the package.

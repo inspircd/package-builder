@@ -15,10 +15,7 @@ override_dh_auto_configure:
 		./modulemanager install ${INSPIRCD_CONTRIB}; \
 	fi
 	./configure \
-		--enable-extras "@@DEB_MODULES@@"
-	./configure \
 		--development \
-		--disable-auto-extras \
 		--distribution-label "deb@@INSPIRCD_REVISION@@" \
 		--gid "irc" \
 		--system \

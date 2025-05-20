@@ -1,4 +1,5 @@
 #!/bin/bash
+export INSPIRCD_VERSION=4.7.0
 set -e
 
 # Bash 4 is required for associative arrays.
@@ -33,7 +34,7 @@ if [ -z "${INSPIRCD_PACKAGES}" ]
 then
 	echo "INSPIRCD_PACKAGES is not set; enabling all packages."
 	INSPIRCD_PACKAGES_DEFAULT='1'
-	INSPIRCD_PACKAGES='deb rpm html'
+	INSPIRCD_PACKAGES='deb'
 fi
 
 # The INSPIRCD_MODULES variable may be set.
@@ -46,10 +47,7 @@ then
 fi
 
 # Modules which should not be packaged.
-declare -Ax INSPIRCD_MODULE_WARNINGS=(
-	["geo_maxmind"]="libmaxminddb's license (Apache 2.0) is not compatible with InspIRCd's (GPLv2)"
-	["ssl_openssl"]="OpenSSL's license (custom) is not compatible with InspIRCd's (GPLv2)"
-)
+declare -Ax INSPIRCD_MODULE_WARNINGS=()
 
 # The directory the current script is in.
 export INSPIRCD_ROOT_DIR=$(dirname $(readlink -f "${BASH_SOURCE[0]}"))
