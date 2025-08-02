@@ -63,6 +63,7 @@ mv $RPM_BUILD_ROOT/usr/share/inspircd/inspircd.service $RPM_BUILD_ROOT%{_unitdir
 mkdir -p $RPM_BUILD_ROOT/etc/logrotate.d
 mv $RPM_BUILD_ROOT/usr/share/inspircd/logrotate $RPM_BUILD_ROOT/etc/logrotate.d/inspircd
 rm $RPM_BUILD_ROOT/usr/share/inspircd/inspircd
+rm $RPM_BUILD_ROOT/usr/share/inspircd/inspircd.openrc
 cp docs/AUTHORS.txt $RPM_BUILD_ROOT/usr/share/doc/inspircd
 cp docs/LICENSE.txt $RPM_BUILD_ROOT/usr/share/doc/inspircd
 
