@@ -35,7 +35,7 @@ rpmbuild -ba ${SPEC}
 
 # Copy the packages to the output directory.
 echo "${DISTRO_NAME}:" >> ${PACKAGEDB}
-for PACKAGE in "${RPMBUILD}/RPMS/$(uname -p)/"*.rpm "${RPMBUILD}/SRPMS/"*.rpm
+for PACKAGE in "${RPMBUILD}/RPMS/$(uname -m)/"*.rpm "${RPMBUILD}/SRPMS/"*.rpm
 do
 	chown "${BUILD_USER}:${BUILD_GROUP}" ${PACKAGE}
 	mv ${PACKAGE} ${PACKAGES}
