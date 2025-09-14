@@ -41,3 +41,5 @@ jobs:
             platform: rocky-8
           - package: rpm
             platform: rocky-9
+          - package: rpm
+            platform: rocky-10
