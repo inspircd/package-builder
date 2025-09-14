@@ -5,7 +5,7 @@ then
 fi
 
 export PLATFORM_NAME="Rocky Linux 9"
-export PLATFORM_CONTAINER="rockylinux:9"
+export PLATFORM_CONTAINER="rockylinux/rockylinux:9"
 
 export CORE_BUILD_DEPS="libpsl-devel pkgconfig"
 export CORE_RUNTIME_DEPS="libpsl publicsuffix-list"
