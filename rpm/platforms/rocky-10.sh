@@ -42,6 +42,7 @@ declare -Ax MODULE_ERRORS=(
 	["argon2"]="Argon2 is not packaged by Rocky Linux 10"
 	["log_json"]="yyjson is not packaged by Rocky Linux 10"
 	["regex_re2"]="RE2 is not is not packaged by Rocky Linux 10"
+	["regex_tre"]="TRE is not is not packaged by Rocky Linux 10"
 )
 
 declare -Ax MODULE_WARNINGS=()
