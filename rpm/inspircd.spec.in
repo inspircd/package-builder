@@ -6,8 +6,8 @@ License:        GPLv2
 URL:            https://inspircd.org
 Source0:        https://github.com/@@INSPIRCD_REPOSITORY@@/archive/v%{version}.tar.gz
 
-BuildRequires:    systemd @@RPM_BUILD_DEPS@@
-Requires:         systemd @@RPM_RUNTIME_DEPS@@
+BuildRequires:    @@RPM_BUILD_DEPS@@
+Requires:         @@RPM_RUNTIME_DEPS@@
 Requires(pre):    shadow-utils
 Requires(post):   systemd
 Requires(preun):  systemd

@@ -7,8 +7,8 @@ fi
 export PLATFORM_NAME="Rocky Linux 9"
 export PLATFORM_CONTAINER="rockylinux/rockylinux:9"
 
-export CORE_BUILD_DEPS="libpsl-devel pkgconfig"
-export CORE_RUNTIME_DEPS="libpsl publicsuffix-list"
+export CORE_BUILD_DEPS="libpsl-devel pkgconfig systemd"
+export CORE_RUNTIME_DEPS="libpsl publicsuffix-list systemd"
 
 declare -Ax MODULE_BUILD_DEPS=(
 	["geo_maxmind"]="libmaxminddb-devel pkgconfig"
