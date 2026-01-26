@@ -28,8 +28,8 @@ do
 	done
 
 	# Start building dependency lists with the core dependencies.
-	DEB_BUILD_DEPS=${CORE_BUILD_DEPS}
-	DEB_RUNTIME_DEPS=${CORE_RUNTIME_DEPS}
+	RPM_BUILD_DEPS=${CORE_BUILD_DEPS}
+	RPM_RUNTIME_DEPS=${CORE_RUNTIME_DEPS}
 
 	# Attempt to enable all of the requested modules.
 	for INSPIRCD_MODULE in ${INSPIRCD_MODULES}
