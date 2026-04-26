@@ -45,6 +45,8 @@ jobs:
             platform: ubuntu-22-04
           - package: deb
             platform: ubuntu-24-04
+          - package: deb
+            platform: ubuntu-26-04
           - package: rpm
             platform: rocky-8
           - package: rpm
