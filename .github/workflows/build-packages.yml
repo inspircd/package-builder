@@ -6,17 +6,13 @@ on:
     - cron: '0 0 * * 0'
   workflow_dispatch:
 jobs:
-  build:
+  version:
     runs-on: ubuntu-latest
-    env:
-      INSPIRCD_DEB_PLATFORMS: ${{ matrix.package == 'deb' && matrix.platform || null }}
-      INSPIRCD_RPM_PLATFORMS: ${{ matrix.package == 'rpm' && matrix.platform || null }}
-      INSPIRCD_IGNORE_WARNINGS: 1
-      INSPIRCD_PACKAGES: ${{ matrix.package }} html
-      INSPIRCD_REVISION: ${{ github.sha }}
+    outputs:
+      INSPIRCD_VERSION: ${{ steps.version.outputs.INSPIRCD_VERSION }}
     steps:
-      - uses: actions/checkout@v6
       - name: Retrieve latest release
+        id: version
         run: |
           INSPIRCD_VERSION=$(curl https://api.github.com/repos/inspircd/inspircd/releases | jq --raw-output 'map(select((.draft or .prerelease | not) and (.tag_name | startswith("v4.")))) | first .tag_name | .[1:]')
           if [ -z "${INSPIRCD_VERSION}" ]
@@ -24,7 +20,21 @@ jobs:
             exit 1
           fi
           echo "Building packages for InspIRCd ${INSPIRCD_VERSION}"
-          echo "INSPIRCD_VERSION=${INSPIRCD_VERSION}" >> $GITHUB_ENV
+          echo "INSPIRCD_VERSION=${INSPIRCD_VERSION}" >> $GITHUB_OUTPUT
+
+  build:
+    runs-on: ubuntu-latest
+    env:
+      INSPIRCD_DEB_PLATFORMS: ${{ matrix.package == 'deb' && matrix.platform || null }}
+      INSPIRCD_RPM_PLATFORMS: ${{ matrix.package == 'rpm' && matrix.platform || null }}
+      INSPIRCD_IGNORE_WARNINGS: 1
+      INSPIRCD_VERSION: ${{ needs.version.outputs.INSPIRCD_VERSION }}
+      INSPIRCD_PACKAGES: ${{ matrix.package }} html
+      INSPIRCD_REVISION: ${{ github.sha }}
+    needs:
+      - version
+    steps:
+      - uses: actions/checkout@v6
 
       - name: Build packages
         run: ./build.sh
