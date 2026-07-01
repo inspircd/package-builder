@@ -34,7 +34,7 @@ jobs:
     needs:
       - version
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Build packages
         run: ./build.sh
